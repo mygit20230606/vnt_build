@@ -264,8 +264,7 @@ jobs:
         if: matrix.TARGET == 'x86_64-unknown-linux-musl' && matrix.OS == 'ubuntu-latest'
         run: |
           cd $GITHUB_WORKSPACE
-          tar -czf vnt_source.gz --exclude=./target --exclude=./artifacts .
-        shell: bash
+          tar -czf vnt_source.gz --exclude=./target --exclude=./artifacts --exclude=.git . || true
 
       - name: Upload source package
         if: matrix.TARGET == 'x86_64-unknown-linux-musl' && matrix.OS == 'ubuntu-latest'
