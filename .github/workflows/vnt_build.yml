@@ -81,8 +81,9 @@ jobs:
         run: git submodule update --init --recursive --remote && git submodule status
 
       - name: 修改源码
-        #去除部分日志
-        run: sed -i 's/println!/#println!/g' common/src/callback.rs
+        run: |
+          sed -i.bak 's/println!/\/\/println!/g' common/src/callback.rs
+          rm -f common/src/callback.rs.bak
 
       - name: Cargo cache
         uses: actions/cache@v4
